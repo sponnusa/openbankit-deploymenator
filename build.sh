@@ -6,6 +6,7 @@ REPOS=(
     "bitbucket.attic.pw/scm/smar/backoffice.git"
     "bitbucket.attic.pw/scm/smar/info.git"
     "bitbucket.attic.pw/scm/smar/keyserver.git"
+    "bitbucket.attic.pw/scm/smar/merchant.git"
     "bitbucket.attic.pw/scm/smar/merchant-bot.git"
     "bitbucket.attic.pw/scm/smar/nginx-proxy.git"
     "bitbucket.attic.pw/scm/smar/offline.git"
