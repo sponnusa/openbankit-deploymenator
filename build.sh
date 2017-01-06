@@ -17,6 +17,7 @@ REPOS=(
 
 GIT_USER=''
 GIT_PASS=''
+GIT_BRANCH='nbu'
 BASE_DIR='/vhosts/'
 
 while true
@@ -51,6 +52,11 @@ for i in "${REPOS[@]}"
 do
     dir=$(basename "$i" ".git")
     dir=$BASE_DIR$dir
-    git clone -b nbu "http://$GIT_USER:$GIT_PASS@$i" $dir
-    cd $dir && make build && cd ..
+
+    if [[ -d "$dir" ]]; then
+        cd $dir && git pull && make build && cd ..
+    else
+        git clone -b $GIT_BRANCH "http://$GIT_USER:$GIT_PASS@$i" $dir
+        cd $dir && make build && cd ..
+    fi
 done
