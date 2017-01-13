@@ -1,13 +1,13 @@
 #!/bin/bash
 
 REPOS=(
-    "bitbucket.attic.pw/scm/smar/abs.git"
     "bitbucket.attic.pw/scm/smar/agent.git"
     "bitbucket.attic.pw/scm/smar/backoffice.git"
     "bitbucket.attic.pw/scm/smar/info.git"
     "bitbucket.attic.pw/scm/smar/keyserver.git"
     "bitbucket.attic.pw/scm/smar/merchant.git"
     "bitbucket.attic.pw/scm/smar/merchant-bot.git"
+    "bitbucket.attic.pw/scm/smar/distribution-daemon.git"
     "bitbucket.attic.pw/scm/smar/nginx-proxy.git"
     "bitbucket.attic.pw/scm/smar/offline.git"
     "bitbucket.attic.pw/scm/smar/web-wallet.git"
