@@ -1,10 +1,10 @@
 #!/bin/bash
 
 REPOS=(
-    "bitbucket.attic.pw/scm/smar/abs.git"
     "bitbucket.attic.pw/scm/smar/agent.git"
     "bitbucket.attic.pw/scm/smar/cards-bot.git"
     "bitbucket.attic.pw/scm/smar/backoffice.git"
+    "bitbucket.attic.pw/scm/smar/distribution-daemon.git"
     "bitbucket.attic.pw/scm/smar/info.git"
     "bitbucket.attic.pw/scm/smar/keyserver.git"
     "bitbucket.attic.pw/scm/smar/merchant.git"
@@ -21,10 +21,10 @@ TYPE_ENV=1
 TYPE_JS=2
 
 ENV_TYPES=(
-    ${TYPE_ENV}     #abs
     ${TYPE_JS}      #agent
     ${TYPE_ENV}     #cards-bot
     ${TYPE_JS}      #backoffice
+    ${TYPE_ENV}     #distribution-daemon
     ${TYPE_JS}      #info
     ${TYPE_ENV}     #keyserver
     ${TYPE_JS}      #merchant
@@ -40,6 +40,16 @@ GIT_USER=''
 GIT_PASS=''
 GIT_BRANCH='nbu'
 BASE_DIR='/vhosts/'
+
+function makeconfig {
+    if [[ ${ENV_TYPES[${COUNTER}]} == ${TYPE_JS} ]]; then
+        cd $1 && cp -f ../default.env.js env.js  && cd ..
+    fi
+
+    if [[ ${ENV_TYPES[${COUNTER}]} == ${TYPE_ENV} ]]; then
+        cd $1 && cp -f ../default.env .env  && cd ..
+    fi
+}
 
 while true
 do
@@ -75,20 +85,12 @@ do
     dir=$(basename "$i" ".git")
     dir=${BASE_DIR}${dir}
 
-#    if [[ -d "$dir" ]]; then
-#        cd $dir && git pull && make build && cd ..
-#    else
-#        git clone -b $GIT_BRANCH "http://$GIT_USER:$GIT_PASS@$i" $dir
-#        cd $dir && make build && cd ..
-#    fi
-
-    if [[ ${ENV_TYPES[${COUNTER}]} == ${TYPE_JS} ]]; then
-        cd ${dir} && cp -f default.env.js ${dir}/env.js  && cd ..
-    fi
-
-    if [[ ${ENV_TYPES[${COUNTER}]} == ${TYPE_ENV} ]]; then
-        cd ${dir} && cp -f default.env ${dir}/.env  && cd ..
-    fi
+   if [[ -d "$dir" ]]; then
+       cd $dir && git pull && makeconfig $dir && make build && cd ..
+   else
+       git clone -b $GIT_BRANCH "http://$GIT_USER:$GIT_PASS@$i" $dir
+       cd $dir && makeconfig $dir && make build && cd ..
+   fi
 
     ((COUNTER++))
 done
