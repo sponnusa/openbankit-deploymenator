@@ -18,7 +18,7 @@ REPOS=(
 GIT_USER=''
 GIT_PASS=''
 GIT_BRANCH='nbu0.1'
-BASE_DIR='/home/ihor/test/'
+BASE_DIR='/vhosts/'
 
 while true
 do
