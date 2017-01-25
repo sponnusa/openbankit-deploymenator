@@ -4,7 +4,6 @@ REPOS=(
     "bitbucket.attic.pw/scm/smar/agent.git"
     "bitbucket.attic.pw/scm/smar/cards-bot.git"
     "bitbucket.attic.pw/scm/smar/backoffice.git"
-#    "bitbucket.attic.pw/scm/smar/distribution-daemon.git"
     "bitbucket.attic.pw/scm/smar/info.git"
     "bitbucket.attic.pw/scm/smar/keyserver.git"
     "bitbucket.attic.pw/scm/smar/merchant.git"
@@ -24,7 +23,6 @@ ENV_TYPES=(
     ${TYPE_JS}      #agent
     ${TYPE_ENV}     #cards-bot
     ${TYPE_JS}      #backoffice
-#    ${TYPE_ENV}     #distribution-daemon
     ${TYPE_JS}      #info
     ${TYPE_ENV}     #keyserver
     ${TYPE_JS}      #merchant
@@ -86,7 +84,7 @@ do
     dir=${BASE_DIR}${dir}
 
    if [[ -d "$dir" ]]; then
-       cd $dir && git pull && makeconfig $dir && make build && cd ..
+       cd $dir && makeconfig $dir && make build && cd ..
    else
        git clone -b $GIT_BRANCH "http://$GIT_USER:$GIT_PASS@$i" $dir
        cd $dir && makeconfig $dir && make build && cd ..
