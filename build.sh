@@ -4,7 +4,7 @@ REPOS=(
     "bitbucket.attic.pw/scm/smar/agent.git"
     "bitbucket.attic.pw/scm/smar/cards-bot.git"
     "bitbucket.attic.pw/scm/smar/backoffice.git"
-    "bitbucket.attic.pw/scm/smar/distribution-daemon.git"
+#    "bitbucket.attic.pw/scm/smar/distribution-daemon.git"
     "bitbucket.attic.pw/scm/smar/info.git"
     "bitbucket.attic.pw/scm/smar/keyserver.git"
     "bitbucket.attic.pw/scm/smar/merchant.git"
@@ -24,7 +24,7 @@ ENV_TYPES=(
     ${TYPE_JS}      #agent
     ${TYPE_ENV}     #cards-bot
     ${TYPE_JS}      #backoffice
-    ${TYPE_ENV}     #distribution-daemon
+#    ${TYPE_ENV}     #distribution-daemon
     ${TYPE_JS}      #info
     ${TYPE_ENV}     #keyserver
     ${TYPE_JS}      #merchant
@@ -38,16 +38,16 @@ ENV_TYPES=(
 
 GIT_USER=''
 GIT_PASS=''
-GIT_BRANCH='nbu'
+GIT_BRANCH='nbu0.1'
 BASE_DIR='/vhosts/'
 
 function makeconfig {
     if [[ ${ENV_TYPES[${COUNTER}]} == ${TYPE_JS} ]]; then
-        cd $1 && cp -f ../default.env.js env.js  && cd ..
+        cd $1 && cp -f ../deploymenator/default.env.js env.js
     fi
 
     if [[ ${ENV_TYPES[${COUNTER}]} == ${TYPE_ENV} ]]; then
-        cd $1 && cp -f ../default.env .env  && cd ..
+        cd $1 && cp -f ../deploymenator/default.env .env
     fi
 }
 
