@@ -2,13 +2,12 @@
 
 REPOS=(
     "bitbucket.attic.pw/scm/smar/agent.git"
+    "bitbucket.attic.pw/scm/smar/cards-bot.git"
     "bitbucket.attic.pw/scm/smar/backoffice.git"
     "bitbucket.attic.pw/scm/smar/info.git"
     "bitbucket.attic.pw/scm/smar/keyserver.git"
     "bitbucket.attic.pw/scm/smar/merchant.git"
     "bitbucket.attic.pw/scm/smar/merchant-bot.git"
-    "bitbucket.attic.pw/scm/smar/cards-bot.git"
-    "bitbucket.attic.pw/scm/smar/distribution-daemon.git"
     "bitbucket.attic.pw/scm/smar/nginx-proxy.git"
     "bitbucket.attic.pw/scm/smar/offline.git"
     "bitbucket.attic.pw/scm/smar/web-wallet.git"
@@ -18,8 +17,8 @@ REPOS=(
 
 GIT_USER=''
 GIT_PASS=''
-GIT_BRANCH='nbu'
-BASE_DIR='/vhosts/'
+GIT_BRANCH='nbu0.1'
+BASE_DIR='/home/ihor/test/'
 
 while true
 do
@@ -55,7 +54,7 @@ do
     dir=$BASE_DIR$dir
 
     if [[ -d "$dir" ]]; then
-        cd $dir && git pull && make build && cd ..
+        cd $dir && make build && cd ..
     else
         git clone -b $GIT_BRANCH "http://$GIT_USER:$GIT_PASS@$i" $dir
         cd $dir && make build && cd ..
