@@ -18,7 +18,7 @@ ENV_TYPES=(
     ${TYPE_ENV}     #keyserver
     ${TYPE_ENV}     #merchant-bot
     ${TYPE_ENV}     #frontend
-    ${TYPE_NONE}    #nginx-proxy
+    ${TYPE_ENV}     #nginx-proxy
     ${TYPE_ENV}     #api
 )
 
@@ -26,14 +26,15 @@ GIT_USER=''
 GIT_PASS=''
 GIT_BRANCH='nbu0.1'
 BASE_DIR='/vhosts/'
+CUR_DIR=${PWD}
 
 function makeconfig {
     if [[ ${ENV_TYPES[${COUNTER}]} == ${TYPE_JS} ]]; then
-        cd $1 && cp -f ../deploymenator/default.env.js env.js
+        cd $1 && cp -f ${CUR_DIR}/default.env.js env.js
     fi
 
     if [[ ${ENV_TYPES[${COUNTER}]} == ${TYPE_ENV} ]]; then
-        cd $1 && cp -f ../deploymenator/default.env .env
+        cd $1 && cp -f ${CUR_DIR}/default.env .env
     fi
 }
 
