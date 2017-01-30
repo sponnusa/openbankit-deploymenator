@@ -1,17 +1,11 @@
 #!/bin/bash
 
 REPOS=(
-    "bitbucket.attic.pw/scm/smar/agent.git"
     "bitbucket.attic.pw/scm/smar/cards-bot.git"
-    "bitbucket.attic.pw/scm/smar/backoffice.git"
-    "bitbucket.attic.pw/scm/smar/info.git"
     "bitbucket.attic.pw/scm/smar/keyserver.git"
-    "bitbucket.attic.pw/scm/smar/merchant.git"
     "bitbucket.attic.pw/scm/smar/merchant-bot.git"
+    "bitbucket.attic.pw/scm/smar/frontend.git"
     "bitbucket.attic.pw/scm/smar/nginx-proxy.git"
-    "bitbucket.attic.pw/scm/smar/offline.git"
-    "bitbucket.attic.pw/scm/smar/web-wallet.git"
-    "bitbucket.attic.pw/scm/smar/welcome.git"
     "bitbucket.attic.pw/scm/cryp/api.git"
 )
 
@@ -20,17 +14,11 @@ TYPE_ENV=1
 TYPE_JS=2
 
 ENV_TYPES=(
-    ${TYPE_JS}      #agent
     ${TYPE_ENV}     #cards-bot
-    ${TYPE_JS}      #backoffice
-    ${TYPE_JS}      #info
     ${TYPE_ENV}     #keyserver
-    ${TYPE_JS}      #merchant
     ${TYPE_ENV}     #merchant-bot
+    ${TYPE_ENV}     #frontend
     ${TYPE_NONE}    #nginx-proxy
-    ${TYPE_JS}      #offline
-    ${TYPE_JS}      #web-wallet
-    ${TYPE_JS}      #welcome
     ${TYPE_ENV}     #api
 )
 

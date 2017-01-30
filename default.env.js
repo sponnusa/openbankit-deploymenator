@@ -12,6 +12,6 @@ var Env = {
 	WELCOME_HOST: 'http://welcome.euah.pw',
     MERCHANT_HOST: 'http://merchant.euah.pw',
     STELLAR_NETWORK: 'euah.network',
-
+    HOST: '5.189.167.152',
 };
 module.exports = Env;
