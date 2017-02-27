@@ -7,12 +7,11 @@ REPOS=(
     "bitbucket.attic.pw/scm/smar/merchant-bot.git"
     "bitbucket.attic.pw/scm/smar/exchange.git"
     "bitbucket.attic.pw/scm/smar/frontend.git"
-    "bitbucket.attic.pw/scm/smar_tool/nginx-proxy.git"
 )
 
 GIT_USER=''
 GIT_PASS=''
-GIT_BRANCH='sm0.1'
+GIT_BRANCH='release'
 BASE_DIR='/vhosts/'
 CUR_DIR=${PWD}
 
