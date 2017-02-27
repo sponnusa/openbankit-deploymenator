@@ -1,24 +1,24 @@
 #!/bin/bash
 
 REPOS=(
-    "bitbucket.attic.pw/scm/smar/agent.git"
+    "bitbucket.attic.pw/scm/smar/abs.git"
+    "bitbucket.attic.pw/scm/smar/api.git"
     "bitbucket.attic.pw/scm/smar/cards-bot.git"
-    "bitbucket.attic.pw/scm/smar/backoffice.git"
-    "bitbucket.attic.pw/scm/smar/info.git"
-    "bitbucket.attic.pw/scm/smar/keyserver.git"
-    "bitbucket.attic.pw/scm/smar/merchant.git"
     "bitbucket.attic.pw/scm/smar/merchant-bot.git"
+    "bitbucket.attic.pw/scm/smar/exchange.git"
+    "bitbucket.attic.pw/scm/smar/frontend.git"
     "bitbucket.attic.pw/scm/smar/nginx-proxy.git"
-    "bitbucket.attic.pw/scm/smar/offline.git"
-    "bitbucket.attic.pw/scm/smar/web-wallet.git"
-    "bitbucket.attic.pw/scm/smar/welcome.git"
-    "bitbucket.attic.pw/scm/cryp/api.git"
 )
 
 GIT_USER=''
 GIT_PASS=''
-GIT_BRANCH='nbu0.1'
+GIT_BRANCH='sm0.1'
 BASE_DIR='/vhosts/'
+CUR_DIR=${PWD}
+
+function makeconfig {
+    cd $1 && cp -f ${CUR_DIR}/default.env .env
+}
 
 while true
 do
@@ -39,24 +39,24 @@ do
     read -ra key -p "Git password for $GIT_USER: "
     stty $stty_orig     # restore terminal setting.
 
-    if [[ $key == '' ]]; then
+    if [[ ${key} == '' ]]; then
         echo "Error: git password is empty. Try again."
         continue
     fi
 
-    GIT_PASS=$key
+    GIT_PASS=${key}
     break
 done
 
 for i in "${REPOS[@]}"
 do
     dir=$(basename "$i" ".git")
-    dir=$BASE_DIR$dir
+    dir=${BASE_DIR}${dir}
 
-    if [[ -d "$dir" ]]; then
-        cd $dir && make build && cd ..
-    else
-        git clone -b $GIT_BRANCH "http://$GIT_USER:$GIT_PASS@$i" $dir
-        cd $dir && make build && cd ..
-    fi
+   if [[ -d "$dir" ]]; then
+       cd $dir && makeconfig $dir && make build && cd ..
+   else
+       git clone -b $GIT_BRANCH "http://$GIT_USER:$GIT_PASS@$i" $dir
+       cd $dir && makeconfig $dir && make build && cd ..
+   fi
 done
