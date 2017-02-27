@@ -7,7 +7,7 @@ REPOS=(
     "bitbucket.attic.pw/scm/smar/merchant-bot.git"
     "bitbucket.attic.pw/scm/smar/exchange.git"
     "bitbucket.attic.pw/scm/smar/frontend.git"
-    "bitbucket.attic.pw/scm/smar/nginx-proxy.git"
+    "bitbucket.attic.pw/scm/smar_tool/nginx-proxy.git"
 )
 
 GIT_USER=''
