@@ -1,8 +1,8 @@
 #!/bin/bash
 
 REPOS=(
-    "bitbucket.attic.pw/scm/smar/cashier-demon.git"
-    "bitbucket.attic.pw/scm/smar/emission-demon.git"
+    "bitbucket.attic.pw/scm/smar/cashier-daemon.git"
+    "bitbucket.attic.pw/scm/smar/emission-daemon.git"
 )
 
 GIT_USER=''
