@@ -1,8 +1,8 @@
 #!/bin/bash
 
 REPOS=(
-    "bitbucket.attic.pw/scm/smar/cashier-demon.git"
-    "bitbucket.attic.pw/scm/smar/emission-demon.git"
+    "bitbucket.attic.pw/scm/smar/cashier-daemon.git"
+    "bitbucket.attic.pw/scm/smar/emission-daemon.git"
 )
 
 GIT_USER=''
@@ -12,7 +12,7 @@ BASE_DIR='/vhosts/'
 CUR_DIR=${PWD}
 
 function makeconfig {
-    cd $1 && cp -f ${CUR_DIR}/default.env .env
+    cd $1 && cp -f ${CUR_DIR}/clear.env .env
 }
 
 while true

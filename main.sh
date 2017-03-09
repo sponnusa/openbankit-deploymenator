@@ -19,6 +19,18 @@ function makeconfig {
     cd $1 && cp -f ${CUR_DIR}/default.env .env
 }
 
+#clear old default config file
+rm -rf ./default.env
+
+cp -f ./clear.env default.env
+
+echo "" >> ./default.env
+read -p "Enter SMTP host:" smtp_host; echo "SMTP_HOST=$smtp_host" >> ./default.env;
+read -p "Enter SMTP port:" smtp_port; echo "SMTP_PORT=$smtp_port" >> ./default.env;
+read -p "Enter SMTP security:" smtp_security; echo "SMTP_SECURITY=$smtp_security" >> ./default.env;
+read -p "Enter SMTP username:" smtp_user; echo "SMTP_USER=$smtp_user" >> ./default.env;
+read -p "Enter SMTP password:" smtp_pass; echo "SMTP_PASS=$smtp_pass" >> ./default.env;
+
 while true
 do
     read -ra key -p "Git login: "
@@ -59,3 +71,7 @@ do
        cd $dir && makeconfig $dir && make build && cd ..
    fi
 done
+
+echo "make indexes on api..."
+cd ${BASE_DIR}api && sleep 1 && make indexes
+echo "Complete"
