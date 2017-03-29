@@ -11,7 +11,7 @@ REPOS=(
 
 GIT_USER=''
 GIT_PASS=''
-GIT_BRANCH='release'
+GIT_BRANCH='0.1.0'
 BASE_DIR='/vhosts/'
 CUR_DIR=${PWD}
 
