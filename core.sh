@@ -3,7 +3,7 @@
 REPO="bitbucket.org/atticlab/docker-node.git"
 
 GIT_USER=''
-GIT_BRANCH='0.1.0'
+GIT_BRANCH='0.1.1'
 BASE_DIR='/vhosts/'
 CUR_DIR=${PWD}
 
