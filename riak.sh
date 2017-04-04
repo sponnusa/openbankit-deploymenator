@@ -5,14 +5,12 @@ REPO="bitbucket.org/atticlab/docker-riak.git"
 GIT_USER='attic_lab'
 GIT_PASS=''
 GIT_BRANCH='0.1.0'
-BASE_DIR='/vhosts/'
-CUR_DIR=${PWD}
 
 dir=$(basename "$REPO" ".git")
-dir=${BASE_DIR}${dir}
+dir=${PWD}/../${dir}
 
 if [[ -d "$dir" ]]; then
-   echo "Already cloned..."
+   echo "Folder $dir already exists"
 else
    while true
    do

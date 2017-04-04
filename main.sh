@@ -12,7 +12,6 @@ REPOS=(
 GIT_USER='attic_lab'
 GIT_PASS=''
 GIT_BRANCH='0.1.0'
-BASE_DIR='/vhosts/'
 CUR_DIR=${PWD}
 
 function makeconfig {
@@ -51,7 +50,7 @@ done
 for i in "${REPOS[@]}"
 do
     dir=$(basename "$i" ".git")
-    dir=${BASE_DIR}${dir}
+    dir=${CUR_DIR}/../${dir}
 
    if [[ -d "$dir" ]]; then
        cd $dir && makeconfig $dir && make build && cd ..
@@ -62,5 +61,5 @@ do
 done
 
 echo "make indexes on api..."
-cd ${BASE_DIR}api && sleep 1 && make indexes
+cd ./api && sleep 1 && make indexes
 echo "Complete"
