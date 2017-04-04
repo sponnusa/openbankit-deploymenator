@@ -1,11 +1,11 @@
 #!/bin/bash
 
 REPOS=(
-    "bitbucket.attic.pw/scm/smar/cashier-daemon.git"
-    "bitbucket.attic.pw/scm/smar/emission-daemon.git"
+    "bitbucket.org/atticlab/cashier-daemon.git"
+    "bitbucket.org/atticlab/emission-daemon.git"
 )
 
-GIT_USER=''
+GIT_USER='attic_lab'
 GIT_PASS=''
 GIT_BRANCH='0.1.0'
 BASE_DIR='/vhosts/'
@@ -17,25 +17,13 @@ function makeconfig {
 
 while true
 do
-    read -ra key -p "Git login: "
-    if [[ $key == '' ]]; then
-        echo "Error: git login is empty. Try again."
-        continue
-    fi
-
-    GIT_USER=$key
-    break
-done
-
-while true
-do
     stty_orig=`stty -g` # save original terminal setting.
     stty -echo          # turn-off echoing.
-    read -ra key -p "Git password for $GIT_USER: "
+    read -ra key -p "App password: "
     stty $stty_orig     # restore terminal setting.
 
     if [[ ${key} == '' ]]; then
-        echo "Error: git password is empty. Try again."
+        echo "Error: App password is empty. Try again."
         continue
     fi
 

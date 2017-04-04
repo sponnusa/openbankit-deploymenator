@@ -1,15 +1,15 @@
 #!/bin/bash
 
 REPOS=(
-    "bitbucket.attic.pw/scm/smar/abs.git"
-    "bitbucket.attic.pw/scm/smar/api.git"
-    "bitbucket.attic.pw/scm/smar/cards-bot.git"
-    "bitbucket.attic.pw/scm/smar/merchant-bot.git"
-    "bitbucket.attic.pw/scm/smar/exchange.git"
-    "bitbucket.attic.pw/scm/smar/frontend.git"
+    "bitbucket.org/atticlab/abs.git"
+    "bitbucket.org/atticlab/api.git"
+    "bitbucket.org/atticlab/cards-bot.git"
+    "bitbucket.org/atticlab/merchant-bot.git"
+    "bitbucket.org/atticlab/exchange.git"
+    "bitbucket.org/atticlab/frontend.git"
 )
 
-GIT_USER=''
+GIT_USER='attic_lab'
 GIT_PASS=''
 GIT_BRANCH='0.1.0'
 BASE_DIR='/vhosts/'
@@ -19,7 +19,7 @@ function makeconfig {
     cd $1 && cp -f ${CUR_DIR}/default.env .env
 }
 
-#clear old default config file
+clear old default config file
 rm -rf ./default.env
 
 cp -f ./clear.env default.env
@@ -34,25 +34,13 @@ read -p "Enter SMTP password:" smtp_pass; echo "SMTP_PASS=$smtp_pass" >> ./defau
 
 while true
 do
-    read -ra key -p "Git login: "
-    if [[ $key == '' ]]; then
-        echo "Error: git login is empty. Try again."
-        continue
-    fi
-
-    GIT_USER=$key
-    break
-done
-
-while true
-do
     stty_orig=`stty -g` # save original terminal setting.
     stty -echo          # turn-off echoing.
-    read -ra key -p "Git password for $GIT_USER: "
+    read -ra key -p "App password: "
     stty $stty_orig     # restore terminal setting.
 
     if [[ ${key} == '' ]]; then
-        echo "Error: git password is empty. Try again."
+        echo "Error: App password is empty. Try again."
         continue
     fi
 
@@ -68,7 +56,7 @@ do
    if [[ -d "$dir" ]]; then
        cd $dir && makeconfig $dir && make build && cd ..
    else
-       git clone -b $GIT_BRANCH "http://$GIT_USER:$GIT_PASS@$i" $dir
+       git clone -b $GIT_BRANCH "https://$GIT_USER:$GIT_PASS@$i" $dir
        cd $dir && makeconfig $dir && make build && cd ..
    fi
 done
