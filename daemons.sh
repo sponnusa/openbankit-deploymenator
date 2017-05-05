@@ -1,7 +1,6 @@
 #!/bin/bash
 
 REPOS=(
-    "bitbucket.org/atticlab/cashier-daemon.git"
     "bitbucket.org/atticlab/emission-daemon.git"
 )
 

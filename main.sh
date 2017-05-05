@@ -5,7 +5,6 @@ REPOS=(
     "bitbucket.org/atticlab/api.git"
     "bitbucket.org/atticlab/cards-bot.git"
     "bitbucket.org/atticlab/merchant-bot.git"
-    "bitbucket.org/atticlab/exchange.git"
     "bitbucket.org/atticlab/frontend.git"
 )
 
