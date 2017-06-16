@@ -1,13 +1,13 @@
 #!/bin/bash
 
 REPOS=(
-    "bitbucket.org/atticlab/cashier-daemon.git"
-    "bitbucket.org/atticlab/emission-daemon.git"
+    "gitlab.com/openbankit/cashier-daemon.git"
+    "gitlab.com/openbankit/emission-daemon.git"
 )
 
-GIT_USER='attic_lab'
+GIT_USER='openbankit.guest'
 GIT_PASS=''
-GIT_BRANCH='0.1.0'
+GIT_BRANCH='mirror'
 CUR_DIR=${PWD}
 
 function makeconfig {

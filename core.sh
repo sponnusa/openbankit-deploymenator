@@ -1,10 +1,10 @@
 #!/bin/bash
 
-REPO="bitbucket.org/atticlab/docker-node.git"
+REPO="gitlab.com/openbankit/docker-node.git"
 
-GIT_USER='attic_lab'
+GIT_USER='openbankit.guest'
 GIT_PASS=''
-GIT_BRANCH='0.1.3'
+GIT_BRANCH='mirror'
 
 dir=$(basename "$REPO" ".git")
 dir=${PWD}/../${dir}

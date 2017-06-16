@@ -1,10 +1,10 @@
 #!/bin/bash
 
-REPO="bitbucket.org/atticlab/nginx-proxy.git"
+REPO="gitlab.com/openbankit/nginx-proxy.git"
 
-GIT_USER='attic_lab'
+GIT_USER='openbankit.guest'
 GIT_PASS=''
-GIT_BRANCH='0.1.0'
+GIT_BRANCH='mirror'
 
 dir=$(basename "$REPO" ".git")
 dir=${PWD}/../${dir}

@@ -1,17 +1,17 @@
 #!/bin/bash
 
 REPOS=(
-    "bitbucket.org/atticlab/abs.git"
-    "bitbucket.org/atticlab/api.git"
-    "bitbucket.org/atticlab/cards-bot.git"
-    "bitbucket.org/atticlab/merchant-bot.git"
-    "bitbucket.org/atticlab/exchange.git"
-    "bitbucket.org/atticlab/frontend.git"
+    "gitlab.com/openbankit/abs.git"
+    "gitlab.com/openbankit/api.git"
+    "gitlab.com/openbankit/cards-bot.git"
+    "gitlab.com/openbankit/merchant-bot.git"
+    "gitlab.com/openbankit/exchange.git"
+    "gitlab.com/openbankit/frontend.git"
 )
 
-GIT_USER='attic_lab'
+GIT_USER='openbankit.guest'
 GIT_PASS=''
-GIT_BRANCH='0.1.0'
+GIT_BRANCH='mirror'
 CUR_DIR=${PWD}
 
 function makeconfig {
