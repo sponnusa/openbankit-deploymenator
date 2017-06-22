@@ -10,7 +10,7 @@ REPOS=(
 )
 
 GIT_USER='openbankit.guest'
-GIT_PASS=''
+GIT_PASS='OB1guest'
 GIT_BRANCH='mirror'
 CUR_DIR=${PWD}
 
@@ -30,22 +30,6 @@ read -p "Enter SMTP port:" smtp_port; echo "SMTP_PORT=$smtp_port" >> ./default.e
 read -p "Enter SMTP security:" smtp_security; echo "SMTP_SECURITY=$smtp_security" >> ./default.env;
 read -p "Enter SMTP username:" smtp_user; echo "SMTP_USER=$smtp_user" >> ./default.env;
 read -p "Enter SMTP password:" smtp_pass; echo "SMTP_PASS=$smtp_pass" >> ./default.env;
-
-while true
-do
-    stty_orig=`stty -g` # save original terminal setting.
-    stty -echo          # turn-off echoing.
-    read -ra key -p "App password: "
-    stty $stty_orig     # restore terminal setting.
-
-    if [[ ${key} == '' ]]; then
-        echo "Error: App password is empty. Try again."
-        continue
-    fi
-
-    GIT_PASS=${key}
-    break
-done
 
 for i in "${REPOS[@]}"
 do
